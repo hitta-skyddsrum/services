@@ -1,0 +1,19 @@
+[[source]]
+url = "https://api.hittaskyddsrum.se"
+verify_ssl = true
+
+[dev-packages]
+awscli = "*"
+pylint = "*"
+autopep8 = "*"
+ipython = "*"
+
+[packages]
+zappa = "*"
+flask = "*"
+flask-mysql = "*"
+flask-env = "*"
+simplejson = "*"
+flask-sqlalchemy = "*"
+mysql-python = "*"
+MySQL-python = "*"
