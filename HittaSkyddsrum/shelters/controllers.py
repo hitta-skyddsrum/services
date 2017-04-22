@@ -14,17 +14,18 @@ def index():
 
     shelters = Shelter.findNearby(Position(long=long, lat=lat), 10)
 
-    return jsonify(shelters)
+    return jsonify([shelter.serialize() for shelter in shelters])
 
 
 @mod_shelters.route('/<int:id>', methods=['GET'])
 def get(id):
     from models import Shelter
-    shelter = Shelter.query.filter_by(id=id).first()
+    shelter = Shelter.query.get(id)
 
-    dictShelt = shelter.serialize()
+    if shelter is False:
+        abort(404)
 
-    return jsonify(dictShelt)
+    return jsonify(shelter.serialize())
 
 
 @mod_shelters.route('/<int:id>/hospitals', methods=['GET'])
@@ -37,5 +38,5 @@ def getHospitals(id):
     if hospitals is False:
         return abort(404)
 
-    return jsonify(hospitals)
+    return jsonify([hospital.serialize() for hospital in hospitals])
 
