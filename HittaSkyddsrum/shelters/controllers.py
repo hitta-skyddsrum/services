@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, abort
 
-mod_shelters = Blueprint('shelters', __name__, url_prefix='/api/v1/shelters')
+mod_shelters = Blueprint('shelters', __name__)
 
 @mod_shelters.route('/', methods=['GET'])
 def index():
@@ -10,9 +10,9 @@ def index():
     lat = request.args.get('lat')
 
     if not long and not lat:
-        return "Bad query params", 401
+        return jsonify({'message': 'Bad query params'}), 401
 
-    shelters = Shelter.findNearby(Position(long=long, lat=lat), 10)
+    shelters = Shelter.find_nearby(Position(long=long, lat=lat), 10)
 
     return jsonify([shelter.serialize() for shelter in shelters])
 
@@ -33,7 +33,7 @@ def getHospitals(id):
     from models import Shelter, Hospital
 
     shelter = Shelter.query.filter_by(id=id).first()
-    hospitals = Hospital.findNearby(shelter.position)
+    hospitals = Hospital.find_nearby(shelter.position)
 
     if hospitals is False:
         return abort(404)

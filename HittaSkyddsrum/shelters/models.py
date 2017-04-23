@@ -41,7 +41,7 @@ class Shelter(db.Model):
         return Position(self.position_long, self.position_lat)
 
     @staticmethod
-    def findNearby(position, amount):
+    def find_nearby(position, amount):
         sql = """
         SELECT 
             s.*, 
@@ -62,13 +62,12 @@ class Shelter(db.Model):
         ORDER BY distance ASC 
     """
 
-        sheltersExecution = db.engine.execute(sql, {'lat': position.lat, 'long': position.long})
+        shelters_execution = db.engine.execute(sql, {'lat': position.lat, 'long': position.long})
 
         return [Shelter(**shelterData) for shelterData in
-                [dict(zip([column for column in sheltersExecution.keys()], row))
-                 for row in sheltersExecution.fetchmany(amount)]
+                [dict(zip([column for column in shelters_execution.keys()], row))
+                 for row in shelters_execution.fetchmany(amount)]
                 ]
-
 
     def serialize(self):
         return {
@@ -94,8 +93,8 @@ class Hospital():
         self.position = Position(lat=lat, long=long)
 
     @staticmethod
-    def findNearby(position):
-        businessClassificationCode = 1100
+    def find_nearby(position):
+        business_classification_code = 1100
 
         for distance in range(500, 1000, 100):
             url = "http://api.offentligdata.minavardkontakter.se/orgmaster-hsa/v1/hsaObjects?lat={0}&long={1}&distance={2}&businessClassificationCode={3}" \

@@ -3,4 +3,4 @@ import os
 
 # We only need this for local development.
 if __name__ == '__main__':
-    app.run(debug=os.environ.get('DEBUG'))
+    app.run(debug=os.environ.get('DEBUG', False))
