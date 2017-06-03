@@ -2,3 +2,4 @@
 .idea
 *.pyc
 zappa_settings.json
+account.key
