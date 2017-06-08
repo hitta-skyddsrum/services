@@ -1,5 +1,5 @@
 [[source]]
-url = "https://api.hittaskyddsrum.se"
+url = "https://pypi.python.org/simple"
 verify_ssl = true
 
 [dev-packages]
@@ -10,10 +10,10 @@ ipython = "*"
 
 [packages]
 zappa = "*"
-flask = "*"
-flask-mysql = "*"
-flask-env = "*"
 simplejson = "*"
-flask-sqlalchemy = "*"
-mysql-python = "*"
+Flask = "*"
+Flask-MySQL = "*"
+Flask-Env = "*"
+Flask-SQLAlchemy = "*"
 MySQL-python = "*"
+Flask-Cors = "*"
