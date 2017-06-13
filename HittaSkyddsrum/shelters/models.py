@@ -98,7 +98,7 @@ class Hospital():
 
         for distance in range(500, 1000, 100):
             url = "http://api.offentligdata.minavardkontakter.se/orgmaster-hsa/v1/hsaObjects?lat={0}&long={1}&distance={2}&businessClassificationCode={3}" \
-                .format(position.lat, position.long, distance, businessClassificationCode)
+                .format(position.lat, position.long, distance, business_classification_code)
 
             hospitals = json.load(urllib2.urlopen(url))
 
