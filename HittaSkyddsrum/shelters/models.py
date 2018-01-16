@@ -60,13 +60,15 @@ class Shelter(db.Model):
             AS distance 
         FROM shelters s 
         ORDER BY distance ASC 
+        LIMIT %(amount)s
     """
 
-        shelters_execution = db.engine.execute(sql, {'lat': position.lat, 'long': position.long})
+
+        shelters_execution = db.engine.execute(sql, {'lat': position.lat, 'long': position.long, 'amount': amount})
 
         return [Shelter(**shelterData) for shelterData in
                 [dict(zip([column for column in shelters_execution.keys()], row))
-                 for row in shelters_execution.fetchmany(amount)]
+                 for row in shelters_execution.fetchall()]
                 ]
 
     def serialize(self):
