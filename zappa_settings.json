@@ -7,7 +7,6 @@
         "cors": true,
         "route53_enabled": true,
         "lets_encrypt_key": "s3://hitta-skyddsrum-https-certificate/account.key",
-        "profile_name": "hitta_skyddsrum_api",
         "runtime": "python2.7"
     },
     "prod": {

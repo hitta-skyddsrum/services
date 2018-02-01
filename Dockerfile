@@ -11,7 +11,8 @@ git
 COPY . /usr/src/app
 
 WORKDIR /usr/src/app
-RUN pip install pipenv && \
+RUN pip install pipenv \
+  zappa && \
   pipenv install
 
 ENTRYPOINT ["/bin/sh", "-c", "while sleep 3600; do :; done"]
