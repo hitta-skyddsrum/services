@@ -10,6 +10,6 @@ install:
 jobs:
   include:
     - if: branch = staging
-      script: zappa update staging
+      script: zappa update staging || zappa deploy staging
     - if: branch = master
-      script: zappa update prod
+      script: zappa update prod || zappa deploy prod
