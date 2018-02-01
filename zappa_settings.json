@@ -1,0 +1,18 @@
+{
+    "staging": {
+        "app_function": "run.app",
+        "aws_region": "eu-west-1",
+        "s3_bucket": "hitta-skyddsrum-microservices",
+        "domain": "stageapi.hittaskyddsrum.se",
+        "cors": true,
+        "route53_enabled": true,
+        "lets_encrypt_key": "s3://hitta-skyddsrum-https-certificate/account.key",
+        "profile_name": "hitta_skyddsrum_api",
+        "runtime": "python2.7"
+    },
+    "prod": {
+        "extends": "staging",
+        "domain": "api.hittaskyddsrum.se",
+        "s3_bucket": "hitta-skyddsrum-microservices-prod"
+    }
+}

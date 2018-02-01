@@ -1,0 +1,15 @@
+language: python
+
+python:
+  - "2.7"
+
+install: 
+  - pip install pipenv zappa
+  - pipenv install --dev 
+
+jobs:
+  include:
+    - if: branch = staging
+      script: zappa update staging
+    - if: branch = master
+      script: zappa update prod
