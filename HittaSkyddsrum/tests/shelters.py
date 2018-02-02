@@ -23,7 +23,7 @@ class SheltersTest(TestCase):
         close_shelter = Shelter(position_long=18.200, position_lat=59.46)
         db.session.add(close_shelter)
         db.session.commit()
-        response = self.client.get('/api/v1/shelters/?lat=59.3618&lon=18.1205̈́')
+        response = self.client.get('/api/v1/shelters/?lat=59.3618&lon=18.1205');
 
         self.assert200(response)
         response_text = response.get_data(as_text=True)
