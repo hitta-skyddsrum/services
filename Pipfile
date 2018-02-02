@@ -1,19 +1,25 @@
 [[source]]
+
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 
+
 [dev-packages]
+
+zappa = "*"
 awscli = "*"
 pylint = "*"
-autopep8 = "*"
+"autopep8" = "*"
 ipython = "*"
+flask-testing = "*"
+
 
 [packages]
-zappa = "*"
+
 simplejson = "*"
-Flask = "*"
-Flask-MySQL = "*"
-Flask-Env = "*"
-Flask-SQLAlchemy = "*"
-MySQL-python = "*"
-Flask-Cors = "*"
+flask = "*"
+flask-mysql = "*"
+flask-env = "*"
+flask-sqlalchemy = "*"
+mysql-python = "*"
+flask-cors = "*"
