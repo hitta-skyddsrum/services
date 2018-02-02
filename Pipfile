@@ -11,6 +11,7 @@ awscli = "*"
 pylint = "*"
 "autopep8" = "*"
 ipython = "*"
+coverage = "*"
 flask-testing = "*"
 
 

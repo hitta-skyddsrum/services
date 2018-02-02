@@ -9,6 +9,8 @@ install:
 
 jobs:
   include:
+    - stage: test
+      script: coverage run --source="$PWD/HittaSkyddsrum" --omit="*/tests/*" -m HittaSkyddsrum/tests/shelters && codecov
     - if: branch = staging
       script: zappa update staging || zappa deploy staging
     - if: branch = master
