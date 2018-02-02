@@ -1,0 +1,28 @@
+version: "3.2"
+services:
+  database:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=shelters
+  functions: 
+    build: .
+    tty: true
+    environment:
+      - MYSQL_DATABASE_USER=root
+      - MYSQL_DATABASE_PASSWORD=
+      - MYSQL_DATABASE_DB=shelters
+      - MYSQL_DATABASE_HOST=database
+    volumes:
+      - type: bind
+        source: .
+        target: /usr/src/app
+      - type: bind
+        source: "$HOME/.gitconfig"
+        target: /home/developer/.gitconfig
+      - type: bind
+        source: "$HOME/.vimrc"
+        target: /home/developer/.vimrc
+      - type: bind
+        source: "$HOME/.vim"
+        target: /home/developer/.vim
