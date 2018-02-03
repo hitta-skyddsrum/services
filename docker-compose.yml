@@ -17,6 +17,10 @@ services:
       - MYSQL_DATABASE_DB=shelters
       - MYSQL_DATABASE_HOST=database
       - TRAVIS_BRANCH
+      - CODECOV_TOKEN
+      - AWS_ACCESS_KEY_ID  
+      - AWS_SECRET_ACCESS_KEY
+
     volumes:
       - type: bind
         source: "$HOME/.gitconfig"
