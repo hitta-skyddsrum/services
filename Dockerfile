@@ -12,17 +12,16 @@ sudo \
 bash \
 wget \
 zsh
-RUN pip install pipenv \
-zappa 
 
 RUN adduser -D developer
 USER developer
 WORKDIR /home/developer
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 ENV SHELL=/bin/zsh
+ENV PATH=$PATH:/home/developer/.local/bin
 
 COPY . /usr/src/app
 WORKDIR /usr/src/app
-RUN pipenv install
+RUN pip install -r requirements.txt --user
 
 ENTRYPOINT ["/bin/zsh", "-c", "while sleep 3600; do :; done"]

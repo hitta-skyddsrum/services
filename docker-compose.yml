@@ -13,6 +13,7 @@ services:
       - MYSQL_DATABASE_PASSWORD=
       - MYSQL_DATABASE_DB=shelters
       - MYSQL_DATABASE_HOST=database
+      - TRAVIS_BRANCH
     volumes:
       - type: bind
         source: .

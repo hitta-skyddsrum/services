@@ -1,17 +1,16 @@
-language: python
+sudo: required
 
-python:
-  - "2.7"
+services:
+    - docker
 
 install: 
-  - pip install pipenv zappa
-  - pipenv install --dev 
+  - docker-compose up -d
 
 jobs:
   include:
     - stage: test
-      script: coverage run --source="$PWD/HittaSkyddsrum" --omit="*/tests/*" -m HittaSkyddsrum/tests/shelters && codecov
+      script: docker-compose exec functions scripts/coverage.sh
     - if: branch = staging
-      script: zappa update staging || zappa deploy staging
+      script: docker-compose exec functions zappa update staging || zappa deploy staging
     - if: branch = master
-      script: zappa update prod || zappa deploy prod
+      script: docker-compose exec functions zappa update prod || zappa deploy prod
