@@ -1,9 +1,11 @@
-# hitta-skyddsrum-services
+# hitta-skyddsrum-services [![codecov](https://codecov.io/gh/hitta-skyddsrum/services/branch/master/graph/badge.svg)](https://codecov.io/gh/hitta-skyddsrum/services)
+
 
 ## Development
 ```
-docker build --build-arg USER=$USER -t hitta-skyddsrum-services .
-docker run -v $PWD:/usr/src/app -u $(id -u) -dit hitta-skyddsrum-services
-docker exec -it c8e /bin/sh
-
+docker-compose up -d
+docker-compose exec functions zsh
 ```
+
+## Deploy to production
+Push to master and let  Travis do the rest.
