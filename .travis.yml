@@ -10,7 +10,5 @@ jobs:
   include:
     - stage: test
       script: docker-compose exec functions scripts/coverage.sh
-    - if: branch = staging
-      script: docker-compose exec functions zappa update staging || zappa deploy staging
-    - if: branch = master
-      script: docker-compose exec functions zappa update prod || zappa deploy prod
+    - stage: deploy
+      script: docker-compose exec functions scripts/deploy.sh
