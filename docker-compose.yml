@@ -7,6 +7,8 @@ services:
       - MYSQL_DATABASE=shelters
   functions: 
     build: .
+    depends_on:
+      - database
     tty: true
     environment:
       - MYSQL_DATABASE_USER=root
