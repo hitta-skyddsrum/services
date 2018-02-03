@@ -1,5 +1,8 @@
 #!/bin/bash
 
+virtualenv $PWD
+source bin/activate
+
 if [ $TRAVIS_BRANCH == 'master' ]; then
   echo "Deploying to production"
   zappa update prod || zappa deploy prod

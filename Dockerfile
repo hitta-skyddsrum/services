@@ -12,6 +12,7 @@ sudo \
 bash \
 wget \
 zsh
+RUN pip install virtualenv
 
 RUN adduser -D developer
 USER developer
