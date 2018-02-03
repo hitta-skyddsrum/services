@@ -20,7 +20,7 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 ENV SHELL=/bin/zsh
 ENV PATH=$PATH:/home/developer/.local/bin
 
-COPY . /usr/src/app
+COPY --chown=developer . /usr/src/app
 WORKDIR /usr/src/app
 RUN pip install -r requirements.txt --user
 
