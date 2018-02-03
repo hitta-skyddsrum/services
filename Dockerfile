@@ -15,6 +15,7 @@ zsh
 RUN pip install virtualenv
 
 RUN adduser -D developer
+RUN echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER developer
 WORKDIR /home/developer
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
