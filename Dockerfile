@@ -6,6 +6,7 @@ mariadb-dev \
 mariadb-client \
 mariadb-libs \
 gcc \
+jq \
 musl-dev \
 git \
 sudo \

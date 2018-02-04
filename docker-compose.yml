@@ -5,7 +5,7 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_DATABASE=shelters
-  functions: 
+  sandbox: 
     build: .
     depends_on:
       - database
@@ -16,10 +16,7 @@ services:
       - MYSQL_DATABASE_PASSWORD=
       - MYSQL_DATABASE_DB=shelters
       - MYSQL_DATABASE_HOST=database
-      - TRAVIS_BRANCH
       - CODECOV_TOKEN
-      - AWS_ACCESS_KEY_ID  
-      - AWS_SECRET_ACCESS_KEY
 
     volumes:
       - type: bind
@@ -31,3 +28,13 @@ services:
       - type: bind
         source: "$HOME/.vim"
         target: /home/developer/.vim
+  functions:
+    build: .
+    environment:
+      - TRAVIS_BRANCH
+      - MYSQL_DATABASE_USER
+      - MYSQL_DATABASE_PASSWORD
+      - MYSQL_DATABASE_DB
+      - MYSQL_DATABASE_HOST
+      - AWS_ACCESS_KEY_ID  
+      - AWS_SECRET_ACCESS_KEY
