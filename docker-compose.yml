@@ -28,6 +28,12 @@ services:
       - type: bind
         source: "$HOME/.vim"
         target: /home/developer/.vim
+      - type: bind
+        source: "$HOME/.ssh"
+        target: /home/developer/.ssh
+      - type: bind
+        source: "$HOME/.zshrc"
+        target: /home/developer/.zshrc
   functions:
     build: .
     environment:
