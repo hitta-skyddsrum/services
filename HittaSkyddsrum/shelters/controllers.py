@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify, abort
 
 mod_shelters = Blueprint('shelters', __name__)
 
-@mod_shelters.route('/', methods=['GET'])
+@mod_shelters.route('/api/v1/shelters', methods=['GET'])
 def index():
     from models import Shelter, Position
 
@@ -17,7 +17,7 @@ def index():
     return jsonify([shelter.serialize() for shelter in shelters])
 
 
-@mod_shelters.route('/<int:id>', methods=['GET'])
+@mod_shelters.route('/api/v1/shelters/<int:id>', methods=['GET'])
 def get(id):
     from models import Shelter
     shelter = Shelter.query.get(id)
@@ -28,7 +28,7 @@ def get(id):
     return jsonify(shelter.serialize())
 
 
-@mod_shelters.route('/<int:id>/hospitals', methods=['GET'])
+@mod_shelters.route('/api/v1/shelters/<int:id>/hospitals', methods=['GET'])
 def getHospitals(id):
     from models import Shelter, Hospital
 

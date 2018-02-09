@@ -21,7 +21,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL.format(app.config['MYSQL_DATABASE
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-app.register_blueprint(mod_shelters, url_prefix='/api/v1/shelters')
+app.register_blueprint(mod_shelters)
 
 @app.errorhandler(404)
 def page_not_found(error):
