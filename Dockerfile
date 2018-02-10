@@ -6,14 +6,15 @@ mariadb-dev \
 mariadb-client \
 mariadb-libs \
 gcc \
+gettext \
 jq \
+libintl \
 musl-dev \
 git \
 sudo \
 bash \
 wget \
 zsh
-RUN pip install virtualenv
 
 RUN adduser -D developer
 RUN echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers

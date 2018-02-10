@@ -3,6 +3,7 @@
 virtualenv $PWD
 source bin/activate
 pip install -r requirements.txt
+envsubst < zappa_settings.json.tpl > zappa_settings.json
 
 if [ $TRAVIS_BRANCH == 'master' ]; then
   echo "Deploying to production"
