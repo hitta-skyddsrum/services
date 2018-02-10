@@ -2,6 +2,7 @@
 
 virtualenv $PWD
 source bin/activate
+pip install -r requirements.txt
 
 if [ $TRAVIS_BRANCH == 'master' ]; then
   echo "Deploying to production"
