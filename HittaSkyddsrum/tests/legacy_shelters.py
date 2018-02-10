@@ -5,7 +5,7 @@ from flask_testing import TestCase
 from HittaSkyddsrum import db, app
 from HittaSkyddsrum.shelters.models import Shelter
 
-class SheltersTest(TestCase):
+class LegacySheltersTest(TestCase):
 
     TESTING = True
 
@@ -23,7 +23,7 @@ class SheltersTest(TestCase):
         close_shelter = Shelter(position_long=18.200, position_lat=59.46)
         db.session.add(close_shelter)
         db.session.commit()
-        response = self.client.get('/api/v2/shelters/?lat=59.3618&lon=18.1205');
+        response = self.client.get('/api/v1/shelters/?lat=59.3618&lon=18.1205');
 
         self.assert200(response)
         response_text = response.get_data(as_text=True)
@@ -34,7 +34,7 @@ class SheltersTest(TestCase):
         shelter = Shelter(address='Langgatan 1', municipality='Hogdreva', city='Langas', slots=15, air_cleaners=99, filter_type=1, shelter_id='shelter-id-3', estate_id='Real estate', goid='Go id')
         db.session.add(shelter)
         db.session.commit()
-        response = self.client.get('/api/v2/shelters/' + str(shelter.shelter_id))
+        response = self.client.get('/api/v1/shelters/' + str(shelter.id))
 
         self.assertStatus(response, 200)
         self.assertEquals(json.loads(response.get_data(as_text=True)), shelter.serialize())
