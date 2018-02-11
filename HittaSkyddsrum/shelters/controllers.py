@@ -30,6 +30,16 @@ def old_index():
 
     return jsonify([shelter.serialize() for shelter in shelters])
 
+@mod_shelters.route('/api/v1/shelters/all-shelters', methods=['GET'])
+def index_all():
+    from models import Shelter
+    page = int(request.args.get('page'))
+    per_page = int(request.args.get('per_page'))
+
+    shelters = Shelter.query.paginate(page, per_page).items
+
+    return jsonify([shelter.serialize() for shelter in shelters])
+
 @mod_shelters.route('/api/v2/shelters/<string:id>', methods=['GET'])
 def get(id):
     from models import Shelter
