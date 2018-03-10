@@ -1,4 +1,4 @@
-# hitta-skyddsrum-services [![codecov](https://codecov.io/gh/hitta-skyddsrum/services/branch/master/graph/badge.svg)](https://codecov.io/gh/hitta-skyddsrum/services)
+# hitta-skyddsrum-services [![codecov](https://codecov.io/gh/hitta-skyddsrum/services/branch/master/graph/badge.svg)](https://codecov.io/gh/hitta-skyddsrum/services) [![Build Status](https://travis-ci.org/hitta-skyddsrum/services.svg?branch=master)](https://travis-ci.org/hitta-skyddsrum/services)
 
 
 ## Development
