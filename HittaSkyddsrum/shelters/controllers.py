@@ -12,7 +12,7 @@ def index():
     if not long and not lat:
         return jsonify({'message': 'Bad query params'}), 401
 
-    shelters = Shelter.find_nearby(Position(long=long, lat=lat), 10)
+    shelters = Shelter.find_nearby(Position(long=long, lat=lat), 20)
 
     return jsonify([shelter.serialize() for shelter in shelters])
 
