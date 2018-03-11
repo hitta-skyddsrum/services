@@ -37,7 +37,6 @@ echo "When retrieving a shelter accurate properties should be given"
 response=$(curl -s "${shelters_url}1")
 assert_equals "$(get_json_value "$response" ".id")" "1"
 assert_equals "$(get_json_value "$response" ".shelterId")" "142784-8"
-assert_equals "$(get_json_value "$response" ".goid")" "5559A55A6966B0002070D6A1B801F496"
 assert_equals "$(get_json_value "$response" ".address")" "Sockerbruksgatan 3"
 assert_equals "$(get_json_value "$response" ".slots")" "80"
 
@@ -55,7 +54,6 @@ echo "When retrieving a shelter accurate properties should be given"
 response=$(curl -s "${shelters_url}142784-8")
 assert_equals "$(get_json_value "$response" ".id")" "1"
 assert_equals "$(get_json_value "$response" ".shelterId")" "142784-8"
-assert_equals "$(get_json_value "$response" ".goid")" "5559A55A6966B0002070D6A1B801F496"
 assert_equals "$(get_json_value "$response" ".address")" "Sockerbruksgatan 3"
 assert_equals "$(get_json_value "$response" ".slots")" "80"
 

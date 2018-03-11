@@ -23,15 +23,11 @@ class Shelter(db.Model):
     municipality = db.Column(db.String(255))
     city = db.Column(db.String(255))
     slots = db.Column(db.Integer())
-    air_cleaners = db.Column(db.Integer())
     filter_type = db.Column(db.Integer())
     shelter_id = db.Column(db.String(255))
     estate_id = db.Column(db.String(255))
-    goid = db.Column(db.String(255))
     position_long = db.Column(db.DECIMAL())
     position_lat = db.Column(db.DECIMAL())
-    sweref99Position_x = db.Column(db.DECIMAL())
-    sweref99Position_y = db.Column(db.DECIMAL())
 
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
@@ -78,10 +74,8 @@ class Shelter(db.Model):
             'municipality': self.municipality,
             'city': self.city,
             'slots': self.slots,
-            'airCleaners': self.air_cleaners,
             'filterType': self.filter_type,
             'estateId': self.estate_id,
-            'goid': self.goid,
             'shelterId': self.shelter_id,
             'position': self.position.serialize()
         }

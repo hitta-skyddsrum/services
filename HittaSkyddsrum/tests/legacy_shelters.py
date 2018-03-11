@@ -31,7 +31,7 @@ class LegacySheltersTest(TestCase):
         self.assertEquals(shelters, [close_shelter.serialize()])
 
     def test_get_single_shelter(self):
-        shelter = Shelter(address='Langgatan 1', municipality='Hogdreva', city='Langas', slots=15, air_cleaners=99, filter_type=1, shelter_id='shelter-id-3', estate_id='Real estate', goid='Go id')
+        shelter = Shelter(address='Langgatan 1', municipality='Hogdreva', city='Langas', slots=15, filter_type=1, shelter_id='shelter-id-3', estate_id='Real estate')
         db.session.add(shelter)
         db.session.commit()
         response = self.client.get('/api/v1/shelters/' + str(shelter.id))
