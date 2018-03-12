@@ -25,28 +25,6 @@ get_json_array_length () {
   echo $1 | jq ". | length"
 }
 
-echo "### START /api/v1/shelters"
-shelters_url="localhost:5000/api/v1/shelters/" 
-
-echo "When no query params are passed, an accurate error message should be provided"
-response=$(curl -s $shelters_url)
-message=$(get_json_value "$response" ".message")
-assert_equals "$message" "Bad query params"
-
-echo "When retrieving a shelter accurate properties should be given"
-response=$(curl -s "${shelters_url}1")
-assert_equals "$(get_json_value "$response" ".id")" "1"
-assert_equals "$(get_json_value "$response" ".shelterId")" "163753-5"
-assert_equals "$(get_json_value "$response" ".address")" "Herserudsvägen 9 F"
-assert_equals "$(get_json_value "$response" ".slots")" "180"
-
-echo "When passing lat and long query params, nearby shelters should be given"
-response=$(curl -s "${shelters_url}?lat=59.3618&long=18.1205")
-assert_equals "$(get_json_array_length "$response")" "10"
-assert_equals "$(get_json_value "$response" ".[0].id")" "1"
-
-echo "### END /api/v1/shelters"
-echo ""
 echo "### START /api/v2/shelters"
 shelters_url="localhost:5000/api/v2/shelters/" 
 
@@ -61,10 +39,6 @@ echo "When passing lat and long query params, nearby shelters should be given"
 response=$(curl -s "${shelters_url}?lat=59.3618&long=18.1205")
 assert_equals "$(get_json_array_length "$response")" "20"
 assert_equals "$(get_json_value "$response" ".[0].id")" "1"
-
-echo "When searching for hospitals an array with results should be returned"
-response=$(curl -s "${shelters_url}142784-8/hospitals")
-assert_equals "$(get_json_value "$response" ".[0].hsaId")" "SE2321000131-E000000003019"
 
 echo "### END /api/v2/shelters"
 
