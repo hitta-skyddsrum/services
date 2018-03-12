@@ -25,8 +25,8 @@ app.register_blueprint(mod_shelters)
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return jsonify({'message': 'Kunde inte hittas'})
+    return jsonify({'message': 'Kunde inte hittas'}), 404
 
 @app.errorhandler(500)
 def internal_error(error):
-    return jsonify({'message': 'Någonting gick fel, försök igen'})
+    return jsonify({'message': 'Någonting gick fel, försök igen'}), 500

@@ -21,9 +21,8 @@ def get(id):
     from models import Shelter
     shelter = Shelter.query.filter_by(shelter_id=id).first()
 
-    if shelter is False:
+    if shelter is None:
         abort(404)
-    print shelter 
 
     return jsonify(shelter.serialize())
 
