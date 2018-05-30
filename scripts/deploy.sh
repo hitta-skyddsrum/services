@@ -2,6 +2,8 @@
 
 virtualenv $PWD
 source bin/activate
+# https://github.com/Miserlou/Zappa/issues/1471
+pip install pip==9.0.3
 pip install -r requirements.txt
 envsubst < zappa_settings.json.tpl > zappa_settings.json
 
