@@ -37,6 +37,17 @@ class Shelter(db.Model):
         return Position(self.position_long, self.position_lat)
 
     @staticmethod
+    def find_in_bbox(bbox):
+        bboxList = bbox.split(',')
+
+        return Shelter.query.filter(
+                Shelter.position_long > bboxList[0],
+                Shelter.position_lat > bboxList[1],
+                Shelter.position_long < bboxList[2],
+                Shelter.position_lat < bboxList[3],
+                )
+
+    @staticmethod
     def find_nearby(position, amount):
         sql = """
         SELECT 
