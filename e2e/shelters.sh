@@ -41,6 +41,20 @@ assert_equals "$(get_json_value "$response" ".[0].shelterId")" "163753-5"
 
 echo "### END /api/v2/shelters"
 
+echo "### START /api/v3/shelters"
+shelters_url="localhost:5000/api/v3/shelters/" 
+
+echo "When retrieving shelters within a bbox, accurate shelters should be given"
+response=$(curl -s "${shelters_url}?bbox=17.939901351928714,59.28355331123377,17.972860336303714,59.305992725442266")
+assert_equals "$(get_json_value "$response" ".[0].shelterId")" "125500-7"
+assert_equals "$(get_json_value "$response" ".[0].address")" "Vita Liljans Väg 36"
+assert_equals "$(get_json_value "$response" ".[0].city")" "Stockholm"
+assert_equals "$(get_json_value "$response" ".[0].estateId")" "Coldinuorden 3"
+assert_equals "$(get_json_value "$response" ".[0].filterType")" "Sandfilter"
+assert_equals "$(get_json_value "$response" ".[0].municipality")" "Stockholm"
+assert_equals "$(get_json_value "$response" ".[0].slots")" "150"
+
+echo "### END /api/v3/shelters"
 
 if [ "$Errors" -gt "0" ]; then
   exit 1
