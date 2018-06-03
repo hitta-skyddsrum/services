@@ -30,7 +30,6 @@ shelters_url="localhost:5000/api/v2/shelters/"
 
 echo "When retrieving a shelter accurate properties should be given"
 response=$(curl -s "${shelters_url}142784-8")
-assert_equals "$(get_json_value "$response" ".id")" "3958"
 assert_equals "$(get_json_value "$response" ".shelterId")" "142784-8"
 assert_equals "$(get_json_value "$response" ".address")" "Sockerbruksgatan 3"
 assert_equals "$(get_json_value "$response" ".slots")" "80"
@@ -38,7 +37,7 @@ assert_equals "$(get_json_value "$response" ".slots")" "80"
 echo "When passing lat and long query params, nearby shelters should be given"
 response=$(curl -s "${shelters_url}?lat=59.3618&long=18.1205")
 assert_equals "$(get_json_array_length "$response")" "20"
-assert_equals "$(get_json_value "$response" ".[0].id")" "1"
+assert_equals "$(get_json_value "$response" ".[0].shelterId")" "163753-5"
 
 echo "### END /api/v2/shelters"
 
