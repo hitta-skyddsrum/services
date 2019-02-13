@@ -5,6 +5,8 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_DATABASE=shelters
+    ports:
+      - "3306"
   sandbox: 
     build: .
     depends_on:
