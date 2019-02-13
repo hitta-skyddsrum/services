@@ -7,7 +7,7 @@ pip install pip==9.0.3
 pip install -r requirements.txt
 envsubst < zappa_settings.json.tpl > zappa_settings.json
 
-if [ $TRAVIS_BRANCH == 'master' ]; then
+if [ -z "$TRAVIS_PULL_REQUEST_BRANCH" ] && [ $TRAVIS_BRANCH == "master" ]; then
   echo "Deploying to production"
   zappa update prod || zappa deploy prod
 else
