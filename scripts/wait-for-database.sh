@@ -1,16 +1,18 @@
 #!/bin/bash
-# wait-for-postgres.sh
 
-set -e
+echo "Waiting for database at $MYSQL_DATABASE_HOST"
 
-host="$1"
-shift
-cmd="$@"
+tries=0
 
 until mysql -h $MYSQL_DATABASE_HOST -u $MYSQL_DATABASE_USER -e "quit"; do
     >&2 echo "MySQL  is unavailable - sleeping"
-      sleep 1
+      sleep 2
+      tries=$((tries+1))
+      if [ "$tries" -eq 10 ];then
+        echo "Failed after $tries tries."
+        exit 1
+      fi
     done
 
     >&2 echo "MySQL is up - executing command"
-    exec $cmd
+    exit 0
