@@ -1,9 +1,14 @@
+from future import standard_library
+standard_library.install_aliases()
+from builtins import zip
+from builtins import range
+from builtins import object
 from HittaSkyddsrum import db
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import json
 
 
-class Position():
+class Position(object):
     def __init__(self, long, lat):
         self.long = long
         self.lat = lat
@@ -74,7 +79,7 @@ class Shelter(db.Model):
         shelters_execution = db.engine.execute(sql, {'lat': position.lat, 'long': position.long, 'amount': amount})
 
         return [Shelter(**shelterData) for shelterData in
-                [dict(zip([column for column in shelters_execution.keys()], row))
+                [dict(list(zip([column for column in list(shelters_execution.keys())], row)))
                  for row in shelters_execution.fetchall()]
                 ]
 
@@ -92,7 +97,7 @@ class Shelter(db.Model):
         }
 
 
-class Hospital():
+class Hospital(object):
     def __init__(self, hsaId, name, address, lat, long):
         self.hsaId = hsaId
         self.name = name
@@ -107,7 +112,7 @@ class Hospital():
             url = "http://api.offentligdata.minavardkontakter.se/orgmaster-hsa/v1/hsaObjects?lat={0}&long={1}&distance={2}&businessClassificationCode={3}" \
                 .format(position.lat, position.long, distance, business_classification_code)
 
-            hospitals = json.load(urllib2.urlopen(url))
+            hospitals = json.load(urllib.request.urlopen(url))
 
             if (len(hospitals) > 0):
                 return [Hospital(

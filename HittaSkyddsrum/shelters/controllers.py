@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from flask import Blueprint, request, jsonify, abort
 
 mod_shelters = Blueprint('shelters', __name__)
@@ -9,7 +10,7 @@ def indexBbox():
     if not bbox:
         return jsonify({'message': 'Bad query params.'}), 401
 
-    from models import Shelter
+    from .models import Shelter
 
     shelters = Shelter.find_in_bbox(bbox)
 
@@ -17,7 +18,7 @@ def indexBbox():
 
 @mod_shelters.route('/api/v2/shelters/', methods=['GET'])
 def index():
-    from models import Shelter, Position
+    from .models import Shelter, Position
 
     long = request.args.get('long')
     lat = request.args.get('lat')
@@ -32,7 +33,7 @@ def index():
 
 @mod_shelters.route('/api/v2/shelters/<string:id>', methods=['GET'])
 def get(id):
-    from models import Shelter
+    from .models import Shelter
     shelter = Shelter.query.filter_by(shelter_id=id).first()
 
     if shelter is None:

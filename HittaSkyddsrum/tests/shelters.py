@@ -1,3 +1,4 @@
+from builtins import str
 import unittest
 import json
 from flask import jsonify

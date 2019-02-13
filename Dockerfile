@@ -1,10 +1,10 @@
-FROM python:2.7-alpine
+FROM python:3.6-alpine
 
 RUN apk --update add vim \
 curl \
 mariadb-dev \
 mariadb-client \
-mariadb-libs \
+mariadb-dev \
 gcc \
 gettext \
 jq \

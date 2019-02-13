@@ -1,3 +1,4 @@
+from __future__ import print_function
 from HittaSkyddsrum import db
 import argparse
 import gzip
@@ -6,9 +7,9 @@ parser = argparse.ArgumentParser(description='Import given SQL file into MySQL')
 parser.add_argument('file', metavar='file') 
 args = parser.parse_args()
 
-print 'Reading file ' + args.file
+print('Reading file ' + args.file)
 
-fd = gzip.open(args.file, 'r')
+fd = gzip.open(args.file, 'rt')
 sqlFile = fd.read()
 fd.close()
 
@@ -20,7 +21,7 @@ for command in sqlCommands:
 
     try:
         db.engine.execute(command)
-    except ValueError, msg:
-        print "Command skipped: ", msg
+    except ValueError as msg:
+        print("Command skipped: ", msg)
 
-print "Import ended"
+print("Import ended")
