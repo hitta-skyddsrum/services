@@ -1,0 +1,66 @@
+version: 2.1
+orbs:
+    codecov: codecov/codecov@1.0.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.1
+      - image: mysql:5.7
+        environment:
+          - MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          - MYSQL_DATABASE: hitta_skyddsrum
+          - MYSQL_USER: hitta_skyddsrum
+          - MYSQL_PASSWORD: hitta_skyddsrum
+          - MYSQL_DATABASE: hitta_skyddsrum
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+
+      - run:
+          name: unit tests
+          environment:
+            - MYSQL_DATABASE_USER: hitta_skyddsrum
+            - MYSQL_DATABASE_PASSWORD: hitta_skyddsrum
+            - MYSQL_DATABASE_DB: hitta_skyddsrum
+            - MYSQL_DATABASE_HOST: 127.0.0.1
+          command: |
+            . venv/bin/activate
+            ./scripts/wait-for-database.sh && venv/bin/nosetests --all-modules --with-coverage --cover-package=HittaSkyddsrum --cover-xml
+
+      - codecov/upload:
+          file: coverage.xml
+          flags: unit
+
+      - run:
+          name: e2e tests
+          command: |
+            . venv/bin/activate
+            ./scripts/e2e.sh
+
+      - run:
+          name: deploy
+          command: |
+            sudo apt-get update && sudo apt-get install -y gettext && \
+            . venv/bin/activate
+            ./scripts/deploy.sh
