@@ -1,13 +1,14 @@
 #!/bin/bash
 
-echo "Waiting for database at $MYSQL_DATABASE_HOST"
+port=3306
+echo "Waiting for database at $MYSQL_DATABASE_HOST port $port"
 
 tries=0
 
-until mysql -h $MYSQL_DATABASE_HOST -u $MYSQL_DATABASE_USER -e "quit"; do
-    >&2 echo "MySQL  is unavailable - sleeping"
-      sleep 2
-      tries=$((tries+1))
+until nc -z -v $MYSQL_DATABASE_HOST $port; do
+    tries=$((tries+1))
+    >&2 echo "MySQL  is unavailable - sleeping $tries seconds"
+      sleep $tries
       if [ "$tries" -eq 10 ];then
         echo "Failed after $tries tries."
         exit 1
