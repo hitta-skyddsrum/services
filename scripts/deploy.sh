@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# https://github.com/Miserlou/Zappa/issues/1471
-pip install pip==9.0.3
-pip install -r requirements.txt --user
 # Add python bin to $PATH to enable zappa cmd
 python -m site &> /dev/null && PATH="$PATH:`python -m site --user-base`/bin"
 
