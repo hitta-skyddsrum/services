@@ -30,7 +30,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install -r requirements.txt
+            pip install zappa && pip install -r requirements.txt -I && pip uninstall futures -y
 
       - save_cache:
           paths:
