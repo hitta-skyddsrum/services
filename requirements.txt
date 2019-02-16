@@ -16,8 +16,6 @@ Flask-Env==2.0.0
 Flask-MySQL==1.4.0
 Flask-SQLAlchemy==2.3.2
 Flask-Testing==0.7.1
-future==0.17.1
-futures==3.1.1
 hjson==3.0.1
 idna==2.8
 itsdangerous==1.1.0
