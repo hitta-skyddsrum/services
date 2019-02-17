@@ -3,6 +3,8 @@
 # Add python bin to $PATH to enable zappa cmd
 python -m site &> /dev/null && PATH="$PATH:`python -m site --user-base`/bin"
 
+stripped_branch_name=$(echo $CIRCLE_BRANCH | cut -c 1-40)
+export ZAPPA_ROLE_NAME="hs-services-${stripped_branch_name}-lambda-exec"
 if [ $CIRCLE_BRANCH == "master" ]; then
   export ZAPPA_STAGE="prod"
   export ZAPPA_DOMAIN="api.hittaskyddsrum.se"

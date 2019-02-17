@@ -21,6 +21,7 @@
     },
     "$ZAPPA_STAGE": {
         "extends": "_default",
-        "domain": "$ZAPPA_DOMAIN"
+        "domain": "$ZAPPA_DOMAIN",
+        "role_name": "$ZAPPA_ROLE_NAME"
     }
 }
