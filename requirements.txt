@@ -3,7 +3,7 @@ base58==1.0.3
 boto3==1.9.130
 botocore==1.12.130
 certifi==2019.3.9
-cfn-flip==1.1.0.post1
+cfn-flip==1.2.0
 chardet==3.0.4
 Click==7.0
 codecov==2.0.15
