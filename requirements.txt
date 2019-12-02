@@ -42,7 +42,7 @@ troposphere==2.5.2
 Unidecode==1.0.23
 urllib3==1.25.7
 virtualenv==16.7.8
-Werkzeug==0.15.4
+Werkzeug==0.16.0
 wsgi-request-logger==0.4.6
 # Waiting for https://github.com/Miserlou/Zappa/pull/1781
 -e git+https://github.com/kontrollanten/Zappa.git@kontrollanten-fix-762#egg=Zappa
