@@ -1,4 +1,4 @@
-argcomplete==1.10.3
+argcomplete==1.11.0
 base58==1.0.3
 boto3==1.10.46
 botocore==1.13.46
