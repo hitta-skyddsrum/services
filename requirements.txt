@@ -40,7 +40,7 @@ toml==0.10.0
 tqdm==4.48.2
 troposphere==2.6.2
 Unidecode==1.1.1
-urllib3==1.25.7
+urllib3==1.25.10
 virtualenv==20.0.31
 Werkzeug==0.16.1
 wsgi-request-logger==0.4.6
