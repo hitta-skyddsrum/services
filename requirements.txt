@@ -41,7 +41,7 @@ tqdm==4.50.0
 troposphere==2.6.2
 Unidecode==1.1.1
 urllib3==1.25.10
-virtualenv==20.0.32
+virtualenv==20.0.33
 Werkzeug==0.16.1
 wsgi-request-logger==0.4.6
 # Waiting for https://github.com/Miserlou/Zappa/pull/1781
