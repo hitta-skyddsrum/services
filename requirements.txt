@@ -1,7 +1,7 @@
 argcomplete==1.12.1
 base58==2.0.1
 boto3==1.14.56
-botocore==1.18.11
+botocore==1.18.12
 certifi==2019.11.28
 cfn-flip==1.2.3
 chardet==3.0.4
