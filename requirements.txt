@@ -15,7 +15,7 @@ Flask-Cors==3.0.9
 Flask-Env==2.0.0
 Flask-MySQL==1.5.1
 Flask-SQLAlchemy==2.4.4
-Flask-Testing==0.8.0
+Flask-Testing==0.8.1
 hjson==3.0.2
 idna==2.10
 itsdangerous==1.1.0
