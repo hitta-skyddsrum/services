@@ -7,7 +7,7 @@ cfn-flip==1.2.3
 chardet==3.0.4
 Click==7.1.2
 codecov==2.1.10
-coverage==5.3
+coverage==5.4
 docutils==0.16
 durationpy==0.5
 Flask==1.1.2
